@@ -9,8 +9,8 @@ public class PageManager : MonoBehaviour
     public GameObject expanded;
     public GameObject expandedRed;
     public GameObject expandedBlue;
-    public bool trueIsBlue;
     public GameObject logo;
+    public bool trueIsBlue;
     [System.Serializable]
     public class Page {
         public GameObject gameObject;
@@ -36,11 +36,12 @@ public class PageManager : MonoBehaviour
             expanded.SetActive(false);
         }
         else {
-            // i would by lying if I said that I understand what I code
+            // i would by lying if I said that I understand what rudy made
             bool random = Random.Range(0, 2) == 0 ? false : true;
             expandedBlue.gameObject.SetActive(random);
             expandedRed.gameObject.SetActive(!random);
         }
+        
         if (trueIsBlue){
             expandedBlue.gameObject.SetActive(true);
             expandedRed.gameObject.SetActive(false);
