@@ -9,12 +9,13 @@ public class PageManager : MonoBehaviour
     public GameObject expanded;
     public GameObject expandedRed;
     public GameObject expandedBlue;
+    public bool trueIsBlue;
     public GameObject logo;
     [System.Serializable]
     public class Page {
         public GameObject gameObject;
         public string title;
-        public bool choose;
+        public bool choose = true;
         public bool hasLogo = false;
     }
     public Transform tile;
@@ -29,18 +30,29 @@ public class PageManager : MonoBehaviour
         Goto(0);
     }
 
+    // it *supposed* to detect when the chooser is yesed
     public void expander(Page page) {
         if (page.choose){
-            expanded.SetActive(true);
+            expanded.SetActive(false);
         }
         else {
+            // i would by lying if I said that I understand what I code
             bool random = Random.Range(0, 2) == 0 ? false : true;
             expandedBlue.gameObject.SetActive(random);
             expandedRed.gameObject.SetActive(!random);
         }
+        if (trueIsBlue){
+            expandedBlue.gameObject.SetActive(true);
+            expandedRed.gameObject.SetActive(false);
+        }
+        else {
+            expandedBlue.gameObject.SetActive(false);
+            expandedRed.gameObject.SetActive(true);
+        }
         logo.SetActive(page.hasLogo);
-    }
+    }   
      
+    // using on click, the "page" will change
     public void Goto(int newPage) {
         fakeScene[page].gameObject.SetActive(false);
         fakeScene[newPage].gameObject.SetActive(true);
@@ -50,4 +62,15 @@ public class PageManager : MonoBehaviour
         expanded.gameObject.SetActive(false);
         expanded.SetActive(false);
     }
+  
+    // sets wide to red when applicable 
+    public void choseRed(){
+        trueIsBlue = false;
+    }
+    
+    // sets wide to blue when applicable 
+    public void choseBlue (){
+        trueIsBlue = true;
+    }
+
 }
