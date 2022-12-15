@@ -55,7 +55,8 @@ public class PageManager : MonoBehaviour
             chooserBlue.gameObject.SetActive(true);
             chooserRed.gameObject.SetActive(true);  
         } else {
-            logo.gameObject.SetActive(false);
+            chooserBlue.gameObject.SetActive(false);
+            chooserRed.gameObject.SetActive(false);
         }
 
         // the wide if red or is blue or isnt??? Huwooga.
