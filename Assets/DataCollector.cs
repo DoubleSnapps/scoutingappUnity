@@ -17,7 +17,7 @@ public class DataCollector : MonoBehaviour
     [System.Serializable]
     public class Auton
     {
-        List<Marker> Markers = new List<Marker>();
+        public List<Marker> Markers = new List<Marker>();
 
         public void SetMarkers()
         {
@@ -28,15 +28,25 @@ public class DataCollector : MonoBehaviour
     [System.Serializable]
     public class Teleop : Auton
     {
-        int ExtraGoalProgress;
+        public int ExtraGoalProgress;
     }
 
     [System.Serializable]
     public class PostMatch
     {
-        string Notes;
-        float GeneralRating;
-        float Teamwork;
+        public string Notes;
+        [Range(0, 5)]
+        public float GeneralRating;
+        [Range(0, 5)]
+        public float Teamwork;
+        [Range(0, 5)]
+        public float Defense;
+        [Range(0, 5)]
+        public float Offense;
     }
 
+    public Pregame pregame;
+    public Auton atuon;
+    public Teleop teleop;
+    public PostMatch postmatch;
 }
