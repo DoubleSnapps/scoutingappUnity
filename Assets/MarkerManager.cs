@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class MarkerManager : MonoBehaviour
     [SerializeField] Color startPosColor;
     [SerializeField] Color SucceedColor;
     [SerializeField] Color FailColor;
+    [SerializeField] DataCollector john;
+    public bool isTeleop;
     public DifficultyManager difficultyManager;
     public PositivityManager positivityManager;
     int markers = 0;
@@ -57,6 +60,15 @@ public class MarkerManager : MonoBehaviour
                 newObject.transform.localScale = new Vector3(marker.difficulty, marker.difficulty);
             }
             newObject.GetComponent<Image>().color = color;
+
+            List<Marker> list;
+
+            if (isTeleop) {
+                list = john.teleop.Markers;
+            } else {
+                list = john.auton.Markers;
+            }
+            list.Add(marker);
 
             markers++;
         }
