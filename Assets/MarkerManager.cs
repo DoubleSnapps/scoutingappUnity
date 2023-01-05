@@ -47,6 +47,7 @@ public class MarkerManager : MonoBehaviour
                 return;
             }
 
+
             newObject.transform.localScale = new Vector3(1, 1, 1);
 
             Color color = startPosColor;
@@ -61,14 +62,15 @@ public class MarkerManager : MonoBehaviour
             }
             newObject.GetComponent<Image>().color = color;
 
-            List<Marker> list;
+            List<Marker.S_Marker> list;
 
             if (isTeleop) {
-                list = john.teleop.Markers;
+                list = john.teleop.markers;
             } else {
-                list = john.auton.Markers;
+                list = john.auton.markers;
             }
-            list.Add(marker);
+            marker.marker.pos = newObject.transform.localPosition;
+            list.Add(marker.marker);
 
             markers++;
         }

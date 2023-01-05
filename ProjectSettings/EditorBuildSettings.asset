@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/premacthnew.unity
-    guid: a0350e98f89c8b948af70292ca80a2de
+    path: Assets/Scenes/mainscene.unity
+    guid: 8a6b9902b64fff24a8b6f5863e7d7e4c
   m_configObjects: {}
